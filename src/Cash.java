@@ -1,5 +1,5 @@
 
-public class Cash  {
+public class Cash extends Payment {
 
 	int twenties = 20;
 	int tens = 10;
