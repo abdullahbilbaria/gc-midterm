@@ -8,4 +8,9 @@ public class MidTermTests {
 		AssertEquals("A Comic book about Batman!", product1.getDescription());
 		AssertEquals(19.99, product1.getPrice());
 	}
+	
+	@Test
+	void test2 {
+		
+	}
 }
