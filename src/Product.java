@@ -1,9 +1,9 @@
 public class Product {
 	
-  private String name;
-  private String category;
-  private String description;
-  private double price;
+  public String name;
+  public String category;
+  public String description;
+  public double price;
 
   
 //Constructor for the Product class
