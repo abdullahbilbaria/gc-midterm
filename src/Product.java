@@ -2,10 +2,10 @@
 public class Product {
 	
 	//fields 
-	private String name;
-	private String category;
-	private String description;
-	private double price;
+	public String name;
+	public String category;
+	public String description;
+	public double price;
 	
 	public Product(String name, String category, String description, double price) {
 	    this.name = name;
