@@ -51,18 +51,21 @@ public class MidTerm {
 			for (int i = 0; i < products.size(); i++) {
 		
 			System.out.println((i+1) + ") "  + products.get(i).getName() + " " + products.get(i).getCategory() + " " + products.get(i).getDescription() + " $" + products.get(i).getPrice());
+
 			}
 			System.out.println("What would you like to purchase?");
 			int userInput = scnr.nextInt();
 			System.out.println("How many would you like?");
 			int itemCount = scnr.nextInt();
 			System.out.println(products.get(userInput).getName() + ":" + formatter.format(products.get(userInput).getPrice()* itemCount));
+
 			for (int i = 0; i < itemCount; i++) {
 				shoppingCart.add(products.get(userInput));
 			}
 			System.out.print("Continue shopping?(Y/N):");
 			loopResponse  = scnr.next().charAt(0);
 		}while (loopResponse == 'y' || loopResponse == 'Y');
+
 //		System.out.println("Subtotal: " + subtotal); 
 //		System.out.println("Sales Tax: " + salesTax);
 //		System.out.println("Grand Total: " + grandTotal);
@@ -110,11 +113,13 @@ public class MidTerm {
 			System.out.println("Check: " + checkNumber);
 			break;
 		case 3:
+
 			System.out.println("CC:" + CC);
 			System.out.println("EXP:" + expiration);
 			System.out.println("CVV:" + CVV);
 			break;
 		}
 		System.out.println("==================");
+
 	}
 }
