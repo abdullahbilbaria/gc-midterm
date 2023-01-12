@@ -1,11 +1,24 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 /CheckPayment.class
 /CashPayment.class
 /CreditPayment.class
 =======
+=======
+>>>>>>> Stashed changes
 /Cash.class
+/CashPayment.class
 /Check.class
+/CheckPayment.class
 /Credit.class
+<<<<<<< Updated upstream
+/MidTermTests.class
+/Payment.class
+/Product.class
+>>>>>>> Stashed changes
+=======
+/CreditPayment.class
+/MidTerm.class
 /MidTermTests.class
 /Payment.class
 /Product.class
