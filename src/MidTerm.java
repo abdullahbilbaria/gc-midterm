@@ -5,7 +5,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class MidTerm {
-
+	
+	public static void receiptPrinter(Payment payment, double cash, int CC, String expiration, int CVV, double subTotal, int paymentMethod) {
+		
+	}
 	public static void main(String[] args) {
 		ArrayList<Product> products = new ArrayList<>();
 		Product product1 = new Product ("Batman Comic", "[Comics]","A comic about Batman", 19.99);
@@ -26,7 +29,7 @@ public class MidTerm {
 		products.add(product8);
 		Product product9 = new Product ("Black Widow Poster[rare]", "[Posters]","A Rare Poster of Black Widow!!", 999.99);
 		products.add(product9);
-		Product product10 = new Product ("Fantastic Four", "[Comics]","A comic about The Fantastic Four", 19.99);
+		Product product10 = new Product ("Fantastic Four Comic Book", "[Comics]","A comic about The Fantastic Four", 19.99);
 		products.add(product10);
 		Product product11 = new Product ("Ironman Action Figure", "[Figures]","An Ironman Action Figure", 39.99);
 		products.add(product11);
@@ -36,15 +39,12 @@ public class MidTerm {
 		ArrayList<Product> shoppingCart = new ArrayList<>();
 		NumberFormat formatter = new DecimalFormat("#0.00");
 		char loopResponse;
-		int checkNumber = 0;
+		String checkNumber =null;
 		double cash = 0.0;
-		int CC = 0;
+		String CC = null;
 		String expiration = null;
 		int CVV = 0;
 		double subTotal = 0.0;
-//		Double subtotal = calcSubtotal(shoppingCart);
-//		Double salesTax = calcSalesTax(shoppingCart);
-//		Double grandTotal = calcGrandTotal(shoppingCart);
 		Scanner scnr = new Scanner (System.in);
 		System.out.println("Welcome to Grand Circus Comic Book Shop!!");
 		do{
@@ -57,40 +57,44 @@ public class MidTerm {
 			int userInput = scnr.nextInt();
 			System.out.println("How many would you like?");
 			int itemCount = scnr.nextInt();
-			System.out.println(products.get(userInput).getName() + ":" + formatter.format(products.get(userInput).getPrice()* itemCount));
+			System.out.println(products.get(userInput-1).getName() + ":" + formatter.format(products.get(userInput-1).getPrice()* itemCount));
 
 			for (int i = 0; i < itemCount; i++) {
-				shoppingCart.add(products.get(userInput));
+				shoppingCart.add(products.get(userInput-1));
 			}
 			System.out.print("Continue shopping?(Y/N):");
 			loopResponse  = scnr.next().charAt(0);
 		}while (loopResponse == 'y' || loopResponse == 'Y');
 
-//		System.out.println("Subtotal: " + subtotal); 
-//		System.out.println("Sales Tax: " + salesTax);
-//		System.out.println("Grand Total: " + grandTotal);
-		
 		for (int i = 0; i < shoppingCart.size(); i++) {
 			subTotal += shoppingCart.get(i).getPrice();
 		}
-		
+		System.out.println("Sub Total: $" + formatter.format(subTotal));
+		System.out.println("Sales Tax: $" + formatter.format(subTotal*.06));
+		System.out.println("Grand Total: $" + formatter.format(subTotal*1.06));
 		System.out.println("How  would you like to pay?: 1. Cash, 2. Check, 3. Credit");
 		int paymentMethod = scnr.nextInt();
 		switch(paymentMethod) {
 		case 1:
 			System.out.println("Enter Cash Amount:");
-			cash = scnr.nextDouble();
+			CashPayment cash1 = new CashPayment(subTotal*1.06, scnr.nextDouble());
+			cash = cash1.getAmountTendered();
+			cash1.pay();
 			break;
 		case 2:
 			System.out.println("Enter Check Number:");
-			checkNumber = scnr.nextInt();
+			CheckPayment check1 = new CheckPayment(subTotal*1.06,scnr.nextLine());
+			checkNumber = check1.getCheckNumber();
+			check1.pay();
 			break;
 		case 3:
 			System.out.println("Enter Credit Card Number:");
-			CC = scnr.nextInt();
+			CC = scnr.nextLine();
 			System.out.println("Enter Expiration Date:");
 			expiration = scnr.nextLine();
 			CVV = scnr.nextInt();
+			CreditPayment credit1 = new CreditPayment(subTotal*1.06, CC, expiration, CVV);
+			credit1.pay();
 			break;
 		}
 // need to implement abstract pay methods
