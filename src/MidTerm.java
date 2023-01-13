@@ -48,6 +48,7 @@ public class MidTerm {
 		Scanner scnr = new Scanner (System.in);
 		System.out.println("Welcome to Grand Circus Comic Book Shop!!");
 		do{
+		do{
 			for (int i = 0; i < products.size(); i++) {
 		
 			System.out.println((i+1) + ") "  + products.get(i).getName() + " " + products.get(i).getCategory() + " " + products.get(i).getDescription() + " $" + products.get(i).getPrice());
@@ -82,16 +83,19 @@ public class MidTerm {
 			cash1.pay();
 			break;
 		case 2:
+			scnr.nextLine();
 			System.out.println("Enter Check Number:");
 			CheckPayment check1 = new CheckPayment(subTotal*1.06,scnr.nextLine());
 			checkNumber = check1.getCheckNumber();
 			check1.pay();
 			break;
 		case 3:
+			scnr.nextLine();
 			System.out.println("Enter Credit Card Number:");
 			CC = scnr.nextLine();
 			System.out.println("Enter Expiration Date:");
 			expiration = scnr.nextLine();
+			System.out.println("Enter CVV:");
 			CVV = scnr.nextInt();
 			CreditPayment credit1 = new CreditPayment(subTotal*1.06, CC, expiration, CVV);
 			credit1.pay();
@@ -125,5 +129,6 @@ public class MidTerm {
 		}
 		System.out.println("==================");
 
+	}while(true);
 	}
 }
