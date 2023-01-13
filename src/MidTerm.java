@@ -70,9 +70,11 @@ public class MidTerm {
 		for (int i = 0; i < shoppingCart.size(); i++) {
 			subTotal += shoppingCart.get(i).getPrice();
 		}
+		System.out.println("==================");
 		System.out.println("Sub Total: $" + formatter.format(subTotal));
 		System.out.println("Sales Tax: $" + formatter.format(subTotal*.06));
 		System.out.println("Grand Total: $" + formatter.format(subTotal*1.06));
+		System.out.println("==================");
 		System.out.println("How  would you like to pay?: 1. Cash, 2. Check, 3. Credit");
 		int paymentMethod = scnr.nextInt();
 		switch(paymentMethod) {
@@ -101,7 +103,6 @@ public class MidTerm {
 			credit1.pay();
 			break;
 		}
-// need to implement abstract pay methods
 		System.out.println("==================");
 		System.out.println("______RECEIPT_____");
 		System.out.println("==================");
@@ -127,7 +128,10 @@ public class MidTerm {
 			System.out.println("CVV:" + CVV);
 			break;
 		}
-		System.out.println("==================");
+		System.out.println("=========================================");
+		System.out.println("=========================================");
+		System.out.println("=========================================");
+		System.out.println("___Next Order___");
 
 	}while(true);
 	}
