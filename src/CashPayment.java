@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 
 public class CashPayment extends Payment {
 	
@@ -32,11 +33,12 @@ public class CashPayment extends Payment {
 	  
 	  @Override
 	  public void pay() {
-	    double change = amountTendered - super.amount; // calculates the change
-	    if (change >= 0) { // if the amount tendered is greater than or equal to the amount due
-	      System.out.println("Payment successful! Change: $" + change);
-	    } else { // if the amount tendered is less than the amount due
-	      System.out.println("Error: Insufficient amount tendered.");
-	    }
-	  }
+		   double change = amountTendered - super.amount;
+		    DecimalFormat df = new DecimalFormat("#.00");
+		    if (change >= 0) {
+		        System.out.println("Payment successful! Change: $" + df.format(change));
+		    } else {
+		        System.out.println("Error: Insufficient amount tendered.");
+		    }
+		}
 	}
