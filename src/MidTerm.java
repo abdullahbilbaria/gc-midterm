@@ -10,6 +10,7 @@ public class MidTerm {
 		
 	}
 	public static void main(String[] args) {
+// Arraylist of products for our store
 		ArrayList<Product> products = new ArrayList<>();
 		Product product1 = new Product ("Batman Comic", "[Comics]","A comic about Batman", 19.99);
 		products.add(product1);
@@ -47,29 +48,35 @@ public class MidTerm {
 		double subTotal = 0.0;
 		Scanner scnr = new Scanner (System.in);
 		System.out.println("Welcome to Grand Circus Comic Book Shop!!");
+		// do/while loop to return to the menu for a new order
 		do{
+		// do/while loop to add another item to the order
 		do{
+			//loop to print out all items in the arraylist for our menu
 			for (int i = 0; i < products.size(); i++) {
 		
 			System.out.println((i+1) + ") "  + products.get(i).getName() + " " + products.get(i).getCategory() + " " + products.get(i).getDescription() + " $" + products.get(i).getPrice());
 
 			}
+			//asking what they would like to purchase and how many
 			System.out.println("What would you like to purchase?");
 			int userInput = scnr.nextInt();
 			System.out.println("How many would you like?");
 			int itemCount = scnr.nextInt();
 			System.out.println(products.get(userInput-1).getName() + ":" + formatter.format(products.get(userInput-1).getPrice()* itemCount));
-
+			//adding those products to the shopping cart
 			for (int i = 0; i < itemCount; i++) {
 				shoppingCart.add(products.get(userInput-1));
 			}
+			//ask if they would like to continue
 			System.out.print("Continue shopping?(Y/N):");
 			loopResponse  = scnr.next().charAt(0);
 		}while (loopResponse == 'y' || loopResponse == 'Y');
-
+		//calculate subtotal
 		for (int i = 0; i < shoppingCart.size(); i++) {
 			subTotal += shoppingCart.get(i).getPrice();
 		}
+		// print totals and ask how they would like to pay
 		System.out.println("==================");
 		System.out.println("Sub Total: $" + formatter.format(subTotal));
 		System.out.println("Sales Tax: $" + formatter.format(subTotal*.06));
@@ -77,6 +84,7 @@ public class MidTerm {
 		System.out.println("==================");
 		System.out.println("How  would you like to pay?: 1. Cash, 2. Check, 3. Credit");
 		int paymentMethod = scnr.nextInt();
+		// switch statement to create an instance of a payment depending on their selected method
 		switch(paymentMethod) {
 		case 1:
 			System.out.println("Enter Cash Amount:");
@@ -103,6 +111,7 @@ public class MidTerm {
 			credit1.pay();
 			break;
 		}
+		//print receipt
 		System.out.println("==================");
 		System.out.println("______RECEIPT_____");
 		System.out.println("==================");
@@ -132,6 +141,7 @@ public class MidTerm {
 		System.out.println("=========================================");
 		System.out.println("=========================================");
 		System.out.println("___Next Order___");
+		// return to menu for another order
 
 	}while(true);
 	}
